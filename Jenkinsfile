@@ -14,11 +14,13 @@ pipeline {
                 bat 'docker build -t adomicarts/nodeapp-cuban:%BUILD_NUMBER% .'
             }
         }
-        stage('Login to Docker Hub') {
+         stage('Login to Docker Hub') {
             steps {
-                withCredentials([string(credentialsId: 'samin-docker', variable: 'samindocker')]) {
+                withCredentials([string(credentialsId: 'test-dockerhubpassword', variable: 'test-dockerhubpass3')]) {
+    // some block
+
                     script {
-                        bat "docker login -u adomicarts -p %samindocker%"
+                        bat "docker login -u 20031212 -p %test-dockerhubpass3%"
                     }
                 }
             }
